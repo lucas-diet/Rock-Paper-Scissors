@@ -1,6 +1,27 @@
-.container {
+body {
+    background: url(./images/background.jpg) no-repeat center center fixed;;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+h1 {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+.container div {
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
+}
+.space {
+    height: 100px;
+}
+.space-2 {
+    height: 500px;
+}
+.score-board {
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
 }

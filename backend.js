@@ -9,6 +9,9 @@ function getComputerChoice() {
     return choices[choice];
 }
 
+let score_player = 0;
+let score_computer = 0;
+
 function playRound(playerSelection, computerSelection) {
     let r = 'rock';
     let p = 'paper';
@@ -17,58 +20,60 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection == r) {
-        if (computerSelection == r) {
-            return ['Draw','n'];
+        if (computerSelection == r) { 
+            return 'Tie';
         }
         else if (computerSelection == p) {
-            return ['Computer Win -> Paper beats Rock','c'];
+            score_computer++;
+            return 'Lose';
         }
         else if (computerSelection == s) {
-            return ['Player Win -> Rock beats Scissors','p'];
+            score_player++;
+            return 'Win';
         }
     }
     else if (playerSelection == p) {
         if (computerSelection == r) {
-            return ['Player Win -> Paper beats Rock','p'];
+            score_player++;
+            return 'Win';
         }
         else if (computerSelection == p) {
-            return ['Draw','n'];
+            return 'Tie';
         }
         else if (computerSelection == s) {
-            return ['Computer Win -> Scissors beats Paper','c'];
+            score_computer++;
+            return 'Lose';
         }
     }
     else if (playerSelection == s) {
         if (computerSelection == r) {
-            return ['Computer Win -> Rock beats Scissors','c'];
+            score_computer++;
+            return 'Lose';
         }
         else if (computerSelection == p) {
-            return ['Player Win -> Scissors beats Paper','p'];
+            score_player++;
+            return 'Win';
         }
         else if (computerSelection == s) {
-            return ['Draw','n'];
+            return 'Tie';
         }
     }
 }
 
-function game(playerSelection, computerSelection) {
-    let score_player = 0;
-    let score_computer = 0;
-    winner = playRound(playerSelection,computerSelection);
-    if (winner[1] == 'p') {
-        score_player++;
-        return winner[0];
-    }
-    else if (winner[1] == 'c') {
-        score_computer++;
-        return winner[0];
-    }
-    else {
-        return winner[0];
-    }
+function game(playerSelection) {
+    for (let i = 0; i < 9; i++) {
+        let computerSelection = getComputerChoice();
+         winner = playRound(playerSelection, computerSelection);
+        
+        if (playerSelection == computerSelection) {
+            i--;
+        }
+        if (score_player == 5 ^ score_computer == 5) {
+            console.log('Your Score: ' + score_player);
+            console.log('Computer Score: ' + score_computer);
+            console.log(winner);
+            break;
+        }
+    }    
 }
-p = 'Paper';
-c = getComputerChoice();
-console.log('Player: ', p.toLowerCase());
-console.log('Computer: ', c);
-console.log(game(p,c));
+game(getComputerChoice());
