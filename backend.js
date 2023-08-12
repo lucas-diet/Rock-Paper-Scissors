@@ -1,9 +1,5 @@
 function getComputerChoice() {
-    let r = 'rock';
-    let p = 'paper';
-    let s = 'scissors';
-
-    choices = [r,p,s];
+    choices = ['rock', 'paper', 'scissors'];
 
     choice = Math.floor(Math.random() * 3);
     return choices[choice];
@@ -60,20 +56,60 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(playerSelection) {
-    for (let i = 0; i < 9; i++) {
-        let computerSelection = getComputerChoice();
-         winner = playRound(playerSelection, computerSelection);
-        
-        if (playerSelection == computerSelection) {
-            i--;
+function playerChoice() {
+    let choice = '';
+    window.addEventListener('load', function() {
+        if (document.getElementById('s-btn')) {
+            document.getElementById('s-btn').addEventListener('click', choose_scissors);
         }
-        if (score_player == 5 ^ score_computer == 5) {
-            console.log('Your Score: ' + score_player);
-            console.log('Computer Score: ' + score_computer);
-            console.log(winner);
-            break;
+    });
+
+    function choose_scissors() {
+        console.log('scissors');
+        choice = 'scissors';
+    }
+
+    window.addEventListener('load', function() {
+        if (document.getElementById('r-btn')) {
+            document.getElementById('r-btn').addEventListener('click', choose_rock);
         }
-    }    
+    });
+
+    function choose_rock() {
+        console.log('rock');
+        choice = 'rock';
+    }
+
+    window.addEventListener('load', function() {
+        if (document.getElementById('p-btn')) {
+            document.getElementById('p-btn').addEventListener('click', choose_paper);
+        }
+    });
+
+    function choose_paper() {
+        console.log('paper');
+        choice = 'paper';
+    }
+    return choice;
 }
-game(getComputerChoice());
+
+function game() {
+    let playerSelection = playerChoice();
+    let computerSelection = getComputerChoice();
+
+    console.log('Player: ', playerSelection);
+    console.log('Computer: ', computerSelection);
+
+    playRound(playerSelection,computerSelection);
+
+    console.log('Your Score: ' + score_player);
+    console.log('Computer Score: ' + score_computer);
+    
+    //if (score_player == 5 ^ score_computer == 5) {
+      //  console.log('Your Score: ' + score_player);
+        //console.log('Computer Score: ' + score_computer);
+        //console.log(winner);
+    //}    
+}
+
+game();
