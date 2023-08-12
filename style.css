@@ -9,17 +9,43 @@ h1 {
     font-size: 40px;
     font-family: 'Courier New', Courier, monospace;
 }
-.container div {
+.container > div {
     display: flex;
     flex: 1;
     justify-content: center;
     align-items: center;
 }
 .space {
-    height: 100px;
+    height: 10px;
 }
 .space-2 {
-    height: 500px;
+    height: 430px;
+}
+button {
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    border: 2px solid white;
+    margin: 40px;
+    
+}
+.scissors-btn {
+    background: url(./images/schere.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+.rock-btn {
+    background: url(./images/steine.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%; 
+}
+.paper-btn {
+    background: url(./images/papier.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%; 
 }
 .score-board {
     font-size: 40px;
