@@ -1,59 +1,31 @@
 function getComputerChoice() {
-    choices = ['rock', 'paper', 'scissors'];
+    const choices = ['rock', 'paper', 'scissors'];
 
-    choice = Math.floor(Math.random() * 3);
+    const choice = Math.floor(Math.random() * 3);
     return choices[choice];
 }
 
-let score_player = 0;
-let score_computer = 0;
+
 
 function playRound(playerSelection, computerSelection) {
-    let r = 'rock';
-    let p = 'paper';
-    let s = 'scissors';
+    const r = 'rock';
+    const p = 'paper';
+    const s = 'scissors';
 
-    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection === computerSelection) {
+        return 'Tie';
+    }
+    else if (
+        (playerSelection === s && computerSelection === p) ||
+        (playerSelection === r && computerSelection === s) ||
+        (playerSelection === p && computerSelection === r)
+    ) {
+        return 'Win'
+    }
+    else {
+        return 'Lose'
+    }
 
-    if (playerSelection == r) {
-        if (computerSelection == r) { 
-            return 'Tie';
-        }
-        else if (computerSelection == p) {
-            score_computer++;
-            return 'Lose';
-        }
-        else if (computerSelection == s) {
-            score_player++;
-            return 'Win';
-        }
-    }
-    else if (playerSelection == p) {
-        if (computerSelection == r) {
-            score_player++;
-            return 'Win';
-        }
-        else if (computerSelection == p) {
-            return 'Tie';
-        }
-        else if (computerSelection == s) {
-            score_computer++;
-            return 'Lose';
-        }
-    }
-    else if (playerSelection == s) {
-        if (computerSelection == r) {
-            score_computer++;
-            return 'Lose';
-        }
-        else if (computerSelection == p) {
-            score_player++;
-            return 'Win';
-        }
-        else if (computerSelection == s) {
-            return 'Tie';
-        }
-    }
 }
 
 function playerChoice() {
@@ -93,23 +65,40 @@ function playerChoice() {
     return choice;
 }
 
+let score_player = 0;
+let score_computer = 0;
+
 function game() {
-    let playerSelection = playerChoice();
-    let computerSelection = getComputerChoice();
+    for (let round = 0; round < 9; round++) {
+        const playerSelection = prompt().toLowerCase;
+        const computerSelection = getComputerChoice();
+        const result = playRound(playerSelection, computerSelection);
+            
+        console.log('---------------------------------'); 
+        console.log("Player wählt: " + playerSelection);
+        console.log("Computer wählt: " + computerSelection);
+            
+        if (result === 'Win') {
+                score_player++
+        }
+        else if (result === 'Lose') {
+                score_computer++;
+        }
+            
+        if (result == 'Tie') {
+                round--;
+        }
 
-    console.log('Player: ', playerSelection);
-    console.log('Computer: ', computerSelection);
-
-    playRound(playerSelection,computerSelection);
-
-    console.log('Your Score: ' + score_player);
-    console.log('Computer Score: ' + score_computer);
+        console.log('Your Score: ' + score_player);
+        console.log('Computer Score: ' + score_computer);
+        if (score_player === 5) {
+            console.log('Player Win');
+                    
+        }
+        else if (score_computer === 5) {
+            console.log('Computer Win');
     
-    //if (score_player == 5 ^ score_computer == 5) {
-      //  console.log('Your Score: ' + score_player);
-        //console.log('Computer Score: ' + score_computer);
-        //console.log(winner);
-    //}    
+        }
+    }
 }
-
 game();
