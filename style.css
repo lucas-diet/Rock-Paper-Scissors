@@ -19,7 +19,7 @@ h1 {
     height: 10px;
 }
 .space-2 {
-    height: 250px;
+    height: 310px;
 }
 button {
     width: 100px;
@@ -72,9 +72,9 @@ button {
     text-align: center;
 }
 .choice-board {
-    color: yellow;
     font-size: 50px;
+    height: 100px;
 }
-.space3 {
+.space-choices {
     width: 165px;
 }
