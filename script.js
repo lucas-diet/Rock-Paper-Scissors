@@ -70,22 +70,94 @@ let score_player = 0;
 let score_computer = 0;
 
 function game(playerSelection) {
-    for(let round = 0; round < 2; round++) {
         const computerSelection = getComputerChoice();
         if (playerSelection === 'rock') {
             document.getElementById("r-btn").style.borderColor = 'red';
-            playRound(playerSelection,computerSelection);
+            document.getElementById("p-choice").innerHTML = playerSelection;
+            document.getElementById("c-choice").innerHTML = computerSelection;
+
+            if (document.getElementById("p-btn").style.borderColor === 'red' || 
+                document.getElementById("s-btn").style.borderColor === 'red') {
+                    document.getElementById("p-btn").style.borderColor = 'white';
+                    document.getElementById("s-btn").style.borderColor = 'white';  
+                }
+            
+            g = playRound(playerSelection,computerSelection);
+            
+            if (g === 'Win') {
+                score_player++;
+                document.getElementById("score-play").innerHTML = score_player;
+            }
+            else if (g === 'Lose') {
+                score_computer++;
+                document.getElementById("score-comp").innerHTML = score_computer;
+            }
         }
         else if (playerSelection === 'paper') {
             document.getElementById("p-btn").style.borderColor = 'red';
-            playRound(playerSelection,computerSelection);
+            document.getElementById("p-choice").innerHTML = playerSelection;
+            document.getElementById("c-choice").innerHTML = computerSelection;
+
+            if (document.getElementById("r-btn").style.borderColor === 'red' || 
+                document.getElementById("s-btn").style.borderColor === 'red') {
+                    document.getElementById("r-btn").style.borderColor = 'white';
+                    document.getElementById("s-btn").style.borderColor = 'white';  
+                }
+            
+            g = playRound(playerSelection,computerSelection);
+            
+            if (g === 'Win') {
+                score_player++;
+                document.getElementById("score-play").innerHTML = score_player;
+            }
+            else if (g === 'Lose') {
+                score_computer++;
+                document.getElementById("score-comp").innerHTML = score_computer;
+            }
         }
         else if (playerSelection === 'scissors') {
             document.getElementById("s-btn").style.borderColor = 'red';
+            document.getElementById("p-choice").innerHTML = playerSelection;
+            document.getElementById("c-choice").innerHTML = computerSelection;
+
+            if (document.getElementById("p-btn").style.borderColor === 'red' || 
+                document.getElementById("r-btn").style.borderColor === 'red') {
+                    document.getElementById("p-btn").style.borderColor = 'white';
+                    document.getElementById("r-btn").style.borderColor = 'white';  
+                }
+            g = playRound(playerSelection,computerSelection);
+        
+            if (g === 'Win') {
+                score_player++;
+                document.getElementById("score-play").innerHTML = score_player;
+            }
+            else if (g === 'Lose') {
+                score_computer++;
+                document.getElementById("score-comp").innerHTML = score_computer;
+            }
+
             playRound(playerSelection,computerSelection);
         }
-        
-    }
+        if (score_player === 5) {
+            alert('Player Win');
+            document.getElementById("p-btn").style.borderColor = 'white';
+            document.getElementById("r-btn").style.borderColor = 'white'; 
+            document.getElementById("s-btn").style.borderColor = 'white';
+            document.getElementById("score-play").innerHTML = 0;
+            document.getElementById("score-comp").innerHTML = 0;
+            document.getElementById("p-choice").innerHTML = '';
+            document.getElementById("c-choice").innerHTML = '';
+        }
+        else if (score_computer === 5) {
+            alert('Computer Win');
+            document.getElementById("p-btn").style.borderColor = 'white';
+            document.getElementById("r-btn").style.borderColor = 'white'; 
+            document.getElementById("s-btn").style.borderColor = 'white';
+            document.getElementById("score-play").innerHTML = 0;
+            document.getElementById("score-comp").innerHTML = 0;
+            document.getElementById("p-choice").innerHTML = '';
+            document.getElementById("c-choice").innerHTML = '';
+        }
     /**
      for (let round = 0; round < 9; round++) {
         //const playerSelection = prompt().toLowerCase;

@@ -19,7 +19,7 @@ h1 {
     height: 10px;
 }
 .space-2 {
-    height: 430px;
+    height: 250px;
 }
 button {
     width: 100px;
@@ -27,7 +27,6 @@ button {
     border-radius: 100%;
     border: 2px solid white;
     margin: 40px;
-    
 }
 .scissors-btn {
     background: url(./images/schere.png);
@@ -52,4 +51,30 @@ button {
     font-family: 'Courier New', Courier, monospace;
     justify-content: center;
     align-items: left;
+    flex-direction: column;
+}
+.scores {
+    font-size: 20px;
+    display: flex;
+}
+.p-score {
+    flex: 1;
+    margin-right: 50px;
+}
+.p-score p {
+    text-align: center;
+}
+.c-score {
+    flex: 1;
+    margin-left: 40px;
+}
+.c-score p {
+    text-align: center;
+}
+.choice-board {
+    color: yellow;
+    font-size: 50px;
+}
+.space3 {
+    width: 165px;
 }
