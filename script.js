@@ -99,25 +99,13 @@ function game(playerSelection) {
         }
         if (score_player === 5) {
             alert('Player Win');
-            document.getElementById("p-btn").style.borderColor = 'white';
-            document.getElementById("r-btn").style.borderColor = 'white'; 
-            document.getElementById("s-btn").style.borderColor = 'white';
-            document.getElementById("score-play").innerHTML = 0;
-            document.getElementById("score-comp").innerHTML = 0;
-            document.getElementById("p-choice").innerHTML = '';
-            document.getElementById("c-choice").innerHTML = '';
+            window.location.reload();
             score_computer = 0;
             score_player = 0;
         }
         else if (score_computer === 5) {
             alert('Computer Win');
-            document.getElementById("p-btn").style.borderColor = 'white';
-            document.getElementById("r-btn").style.borderColor = 'white'; 
-            document.getElementById("s-btn").style.borderColor = 'white';
-            document.getElementById("score-play").innerHTML = 0;
-            document.getElementById("score-comp").innerHTML = 0;
-            document.getElementById("p-choice").innerHTML = '';
-            document.getElementById("c-choice").innerHTML = '';
+            window.location.reload();
             score_computer = 0;
             score_player = 0;
         }
