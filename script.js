@@ -1,7 +1,7 @@
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissors'];
 
-    const choice = Math.floor(Math.random() * 3);
+    const choice = Math.floor(Math.random() * choices.length);
     return choices[choice];
 }
 
@@ -27,12 +27,12 @@ function playRound(playerSelection, computerSelection) {
     }
 
 }
-
+/**
 function playerChoice() {
     let choice = '';
     window.addEventListener('load', function() {
-        if (document.getElementById('s-btn')) {
-            document.getElementById('s-btn').addEventListener('click', choose_scissors);
+        if (document.getElementById('btn')) {
+            document.getElementById('btn').addEventListener('click', choose_scissors);
         }
     });
 
@@ -42,8 +42,8 @@ function playerChoice() {
     }
 
     window.addEventListener('load', function() {
-        if (document.getElementById('r-btn')) {
-            document.getElementById('r-btn').addEventListener('click', choose_rock);
+        if (document.getElementById('btn')) {
+            document.getElementById('btn').addEventListener('click', choose_rock);
         }
     });
 
@@ -53,8 +53,8 @@ function playerChoice() {
     }
 
     window.addEventListener('load', function() {
-        if (document.getElementById('p-btn')) {
-            document.getElementById('p-btn').addEventListener('click', choose_paper);
+        if (document.getElementById('btn')) {
+            document.getElementById('btn').addEventListener('click', choose_paper);
         }
     });
 
@@ -64,13 +64,32 @@ function playerChoice() {
     }
     return choice;
 }
+ */
 
 let score_player = 0;
 let score_computer = 0;
 
-function game() {
-    for (let round = 0; round < 9; round++) {
-        const playerSelection = prompt().toLowerCase;
+function game(playerSelection) {
+    for(let round = 0; round < 2; round++) {
+        const computerSelection = getComputerChoice();
+        if (playerSelection === 'rock') {
+            document.getElementById("r-btn").style.borderColor = 'red';
+            playRound(playerSelection,computerSelection);
+        }
+        else if (playerSelection === 'paper') {
+            document.getElementById("p-btn").style.borderColor = 'red';
+            playRound(playerSelection,computerSelection);
+        }
+        else if (playerSelection === 'scissors') {
+            document.getElementById("s-btn").style.borderColor = 'red';
+            playRound(playerSelection,computerSelection);
+        }
+        
+    }
+    /**
+     for (let round = 0; round < 9; round++) {
+        //const playerSelection = prompt().toLowerCase;
+        document.getElementById("btn")
         const computerSelection = getComputerChoice();
         const result = playRound(playerSelection, computerSelection);
             
@@ -100,5 +119,5 @@ function game() {
     
         }
     }
+    */
 }
-game();

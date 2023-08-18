@@ -50,4 +50,6 @@ button {
 .score-board {
     font-size: 40px;
     font-family: 'Courier New', Courier, monospace;
+    justify-content: center;
+    align-items: left;
 }
